@@ -27,7 +27,7 @@ cat meta/header_solo.htm meta/last.htm meta/footer.htm > $htmpath
 
 # Prepare htm(timeline)
 touch meta/timeline.htm
-echo "<article><a href='$htmpath'><img src="$year/$month/$imgdst"/></a><h2>$date</h2><p>$description</p></article>" > meta/last.htm
+echo "<article><a href='$htmpath'><img src="$year/$month/$imgdst"></a><h2>$date</h2><p>$description</p></article>" > meta/last.htm
 cat meta/last.htm meta/timeline.htm > meta/_timeline.htm
 mv meta/_timeline.htm meta/timeline.htm
 
