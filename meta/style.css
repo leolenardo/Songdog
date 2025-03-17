@@ -1,0 +1,34 @@
+*{
+	box-sizing: border-box;
+	cursor: default;
+	font-family: 'Ubuntu', sans-serif;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+
+}
+
+
+body{
+	background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+	background-size: cover cover;
+	backgorund orientation: border-box;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	overflow: scroll;
+	
+
+}
+
+img{
+	width: 100%;
+	border-radius: 10px;
+	drop-shadow: 10px 4px 4px black;
+
+}
+
+article{
+	display:box;
+	margin-bottom: 20px;
+	padding: 20px;
+	drop-shadow: 10px 4px 4px black;
