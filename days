@@ -2,7 +2,15 @@
 
 # validation 
 # hey silly pup you need to add validation 
-
+if [ "$#" -ne 2]; then
+	echo "-------------------------------------------------------"
+	echo "hey there pup, it looks like you're missing an argument" 
+	echo "-------------------------------------------------------"
+	echo "				^. .^	   /		     "
+	echo "				/_ /\_____/	             "
+	echo "				    /\    /\                 "
+	exit 1
+fi
 # var set
 year=$(date '+%Y')
 month=$(date '+%m')
