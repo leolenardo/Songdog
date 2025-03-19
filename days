@@ -2,11 +2,12 @@
 
 # validation 
 # hey silly pup you need to add validation 
-if [ "$#" -ne 2]; then
+if [ "$#" -ne 2 ]; then
 	echo "-------------------------------------------------------"
-	echo "hey there pup, it looks like you're missing an argument" 
+	echo "hey there pup, it looks like you're missing an argument"
+	echo "usage: days <path to image> '<comment>' " 
 	echo "-------------------------------------------------------"
-	echo "				^. .^	   /		     "
+	echo "				^x x^	   /		     "
 	echo "				/_ /\_____/	             "
 	echo "				    /\    /\                 "
 	exit 1
@@ -22,6 +23,7 @@ imgdst_solo="../../$imgdst"
 htmpath="$date.html"
 imgsrc=$1
 description="$2"
+
 # main
 # Create folder if it doesn't exist
 mkdir -p "$year/$month"
