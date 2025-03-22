@@ -1,0 +1,38 @@
+#!/bin/sh -e 
+
+#validation 
+
+if [ "$#" -ne 3 ]; then 
+	echo "----------------------------------------------------"
+	echo "Hey there pup, looks like you're missing an argument"
+	echo "usage: days-links <path to link> 'comment'"
+	echo "----------------------------------------------------"
+	echo "                          ^X X^       /"
+	echo "				/_ /\______/"
+	echo "                              /\    /\"
+	exit 1
+fi
+
+#varibles
+linkname="$1"
+linkpath=$2
+linkdec="$3"
+
+
+#main
+
+mkdir -p links
+
+#adding to the list
+
+touch links/list.htm
+echo "<article><a href="$linkpath"><h2>$linkname</h2></a><p>$linkdec</p></article>" > links/lastlink.htm
+cat links/last.htm links/list.htm > links/_list.htm
+mv links/_list.htm links/list.htm
+
+rm -f links.html
+cat meta/header.htm links/list.htm meta/footer.htm > list.html
+
+
+echo "Woof'!' $linkname has been added to the garden"
+echo ""
