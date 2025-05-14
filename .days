@@ -1,0 +1,40 @@
+#!/bin/sh -e
+
+year=$(date '+%Y')
+month=$(date '+%m')
+day=$(date '+%d')
+rnd=$(date '+%s')
+date="$year/$month/$day"
+imgdst="$rnd.jpg"
+imgdst_solo="../../$imgdst"
+htmpath="$date.html"
+imgsrc=$1
+description="$2"
+
+# Create folder if it doesn't exist
+mkdir -p "$year/$month"
+
+# Copy image in the right place
+convert $imgsrc -resize 720x720 $imgdst
+mv  $imgdst "$year/$month"
+# Prepare htm(solo)
+echo "<article><img src="$imgdst"/><h2>$date</h2><p>$description</p></article>" > meta/last.htm
+cat meta/header_solo.htm meta/last.htm meta/footer.htm > $htmpath
+
+# Prepare htm(timeline)
+touch meta/timeline.htm
+echo "<article><a href='$htmpath'><img src="$year/$month/$imgdst"/></a><h2>$date</h2><p>$description</p></article>" > meta/last.htm
+cat meta/last.htm meta/timeline.htm > meta/_timeline.htm
+mv meta/_timeline.htm meta/timeline.htm
+
+# Prepare index
+rm -f index.html
+cat meta/header.htm meta/timeline.htm meta/footer.htm > index.html
+
+echo "-------"
+echo "Created $imgsrc -> $imgdst"
+echo "Text: $description"
+echo ""
+
+git commit -am '*'
+git push
