@@ -42,3 +42,7 @@ article{
 h2{
 	align-self: flex-start ;
 }
+
+article:first-of-type{
+color:#daa520;
+}

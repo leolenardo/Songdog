@@ -31,6 +31,7 @@ mkdir -p "$year/$month"
 # Copy image in the right place
 convert $imgsrc -resize 720x720 $imgdst
 mv  $imgdst "$year/$month"
+
 # Prepare htm(solo)
 echo "<article><img src="$imgdst"><h2>$date</h2><p>$description</p></article>" > meta/last.htm
 cat meta/header_solo.htm meta/last.htm meta/footer.htm > $htmpath
@@ -44,12 +45,12 @@ mv meta/_timeline.htm meta/timeline.htm
 # Prepare index
 rm -f index.html
 cat meta/header.htm meta/timeline.htm meta/footer.htm > index.html
-
+clear
 echo "-------"
 echo "Created $imgsrc -> $imgdst"
 echo "Text: $description"
 echo ""
 git add *
 git commit -am '*'
-# git push --force
-echo "woof remember to git push --force" 
+echo 
+# git push --force i was forceing it before but that kinda sucks 
