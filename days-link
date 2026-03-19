@@ -30,4 +30,4 @@ mv meta/_linklist.htm meta/linklist.htm
 # buliding page
 rm -f meta/links.html
 cat meta/header.htm meta/linklist.htm meta/footer.htm > _linking.html
-mv _linking.html meta/links.html
+mv _linking.html links.html
