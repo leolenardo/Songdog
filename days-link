@@ -1,0 +1,33 @@
+ #!/bin/sh -e 
+
+#valadation
+
+if [ "$#" -ne 3 ]; then
+	echo "" 
+	echo " ================================================================="
+	echo "= Hey there pup it looks like you're missing an argument!         ="
+	echo "= useage: days-links "Title" "https://linkpath.com" 'Description' ="   
+	echo " ================================================================="
+	echo "                							"
+	echo "                  ^X, ,X^          /				"
+	echo "			/    /\_________/				"
+	echo "                 /____/ 	/ \    /\				"
+	echo "                         					 	"
+	exit 1
+
+fi 
+#set var
+title="$1"
+link="$2"
+decri="$3" 
+
+#building link tree
+touch meta/newlink.htm
+touch meta/linklist.htm
+echo '<article class="link"><a href="'$link'"><h2>'$title'</h2></a><p>'$decri'</p></article>' > meta/newlink.htm		
+cat meta/newlink.htm meta/linklist.htm> meta/_linklist.htm
+mv meta/_linklist.htm meta/linklist.htm
+# buliding page
+rm -f meta/links.html
+cat meta/header.htm meta/linklist.htm meta/footer.htm > _linking.html
+mv _linking.html meta/links.html
